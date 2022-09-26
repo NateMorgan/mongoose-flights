@@ -3,7 +3,7 @@ import { Flight } from "../models/flight.js"
 function index(req,res){
   Flight.find({})
   .then( flights =>{
-    res.render('flights/index.ejs',{
+    res.render('flights/index',{
       title:"Flights",
       flights:flights
     })
@@ -14,6 +14,13 @@ function index(req,res){
   })
 }
 
+function newFlight(req, res){
+  res.render('flights/new',{
+    title:"New Flight"
+  })
+}
+
 export {
-  index
+  index,
+  newFlight as new,
 }
