@@ -2,9 +2,10 @@ import { Flight } from "../models/flight.js"
 
 function index(req,res){
   Flight.find({})
-  .then( flight =>{
+  .then( flights =>{
     res.render('flights/index.ejs',{
-      title:"Flights"
+      title:"Flights",
+      flights:flights
     })
   })
   .catch( err =>{
