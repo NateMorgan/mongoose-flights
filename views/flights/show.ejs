@@ -9,4 +9,7 @@
   <p> <%= flight.flightNo %></p>
   <label> Departure Date</label>
   <p> <%= flight.departs %></p>
+  <form action="/flights/<%=flight._id%>/edit" method="GET">
+    <button> Edit Flight </button>
+  </form>
 <%- include('../partials/footer.ejs') %>
