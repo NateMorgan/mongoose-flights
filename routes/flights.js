@@ -7,9 +7,11 @@ const router = Router()
 router.get('/', flightsCtrl.index)
 router.get('/new', flightsCtrl.new)
 router.get('/:id', flightsCtrl.show)
+
 router.get('/:id/edit', flightsCtrl.edit)
 
 router.post('/', flightsCtrl.create)
+router.post('/:id/ticket', flightsCtrl.createTicket)
 
 router.put('/:id',flightsCtrl.update)
 
