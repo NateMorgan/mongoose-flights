@@ -52,6 +52,7 @@ function show(req,res){
   .then(flight => {
     Meal.find({_id: {$nin: flight.meals}})
     .then(meals => {
+      console.log(meals)
       res.render('flights/show',{
         title:"Flight Details",
         flight:flight,

@@ -1,5 +1,6 @@
 <%- include('../partials/html-head.ejs')%>
 <%- include('../partials/nav.ejs')%>
+<main>
   <h1><%= title %></h1>
   <label>Airline</label>
   <p> <%= flight.airline %></p>
@@ -11,22 +12,24 @@
   <p> <%= flight.departs %></p>
   <label> Meal Choices</label>
   <% flight.meals.forEach(meal => { %>
-   <p> <%=meal.name%></p>
-   <% }) %>
-   <label> Add Meal</label>
-  <form action="/flights/<%= flight._id %>/meals" method="POST">
-    <select name="mealId">
-      <% meals.forEach(meal => { %>
-       <option value="<%= meal._id %>"><%= meal.name%></option>
-      <% }) %>
-    </select>
-    <button type="submit">Add Meal</button>
-  </form>
-  <label >Tickets </label>
-  <% flight.tickets.forEach(ticket => { %>
-   <p> <%=ticket.seat%> - $<%=ticket.price%> </p>
-  <% }) %>
-  <form action="/flights/<%=flight.
+    <p> <%=meal.name%></p>
+    <% }) %>
+    <% if (meals.length) { %>
+      <label> Add Meal</label>
+      <form action="/flights/<%= flight._id %>/meals" method="POST">
+        <select name="mealId">
+          <% meals.forEach(meal => { %>
+            <option value="<%= meal._id %>"><%= meal.name%></option>
+          <% }) %>
+        </select>
+        <button type="submit">Add Meal</button>
+      </form>
+    <% } %>
+      <label >Tickets </label>
+      <% flight.tickets.forEach(ticket => { %>
+        <p> <%=ticket.seat%> - $<%=ticket.price%> </p>
+        <% }) %>
+        <form action="/flights/<%=flight.
   _id%>/ticket" method="POST">
     <p>Seat</p>
     <input type="text" name="seat" required pattern="[A-F][1-9]\d?">
@@ -34,7 +37,10 @@
     <input type="number" name="price">
     <button type="submit"> Add Ticket</button>
   </form>
+  <br>
   <form action="/flights/<%=flight._id%>/edit" method="GET">
     <button> Edit Flight </button>
   </form>
-<%- include('../partials/footer.ejs') %>
+</main>
+  <%- include('../partials/footer.ejs') %>
+  

@@ -1,13 +1,15 @@
 <%- include('../partials/html-head.ejs')%>
 <%- include('../partials/nav.ejs')%>
+<main>
   <h1><%= title %></h1>
   <form action="/meals" method="POST">
     <label>Meal Name</label>
     <input type="text" name="name">
     <button type="submit"> Add Meal</button>
   </form>
-  <h2> Meal Options </h2>
+  <h3> Meal Options </h3>
   <% meals.forEach(meal => { %>
-   <p> <%= meal.name %> </p>
+    <p> <%= meal.name %> </p>
   <% }) %>
+</main>
 <%- include('../partials/footer.ejs') %>
